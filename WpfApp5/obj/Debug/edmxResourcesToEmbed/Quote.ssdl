@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="quote.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Quote">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="50" />
+    <Property Name="number" Type="int" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="acrossTheFloor " Type="int" />
+    <Property Name="heightFromTheFloor " Type="int" />
+    <Property Name="angle " Type="int" />
+    <Property Name="timeToMake" Type="int" />
+    <Property Name="price" Type="int" />
+    <Property Name="JobType " Type="nvarchar" MaxLength="50" />
+    <Property Name="eighteenMDF" Type="int" />
+    <Property Name="twelveMDF" Type="int" />
+    <Property Name="nineMDF" Type="int" />
+    <Property Name="runners " Type="int" />
+    <Property Name="pushToOpen" Type="int" />
+    <Property Name="threeBy" Type="int" />
+    <Property Name="paint" Type="int" />
+    <Property Name="Agreed" Type="bit" />
+    <Property Name="Done" Type="bit" />
+    <Property Name="QuoteDate" Type="smalldatetime" />
+    <Property Name="AgreedDate" Type="smalldatetime" />
+  </EntityType>
+  <EntityContainer Name="quoteStoreContainer">
+    <EntitySet Name="Quote" EntityType="Self.Quote" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

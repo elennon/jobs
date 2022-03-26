@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="quoteStoreContainer" CdmEntityContainer="flourQuote">
+    <EntitySetMapping Name="Quotes">
+      <EntityTypeMapping TypeName="quote.Quote">
+        <MappingFragment StoreEntitySet="Quote">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="acrossTheFloor_" ColumnName="acrossTheFloor " />
+          <ScalarProperty Name="heightFromTheFloor_" ColumnName="heightFromTheFloor " />
+          <ScalarProperty Name="angle_" ColumnName="angle " />
+          <ScalarProperty Name="timeToMake" ColumnName="timeToMake" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="JobType_" ColumnName="JobType " />
+          <ScalarProperty Name="eighteenMDF" ColumnName="eighteenMDF" />
+          <ScalarProperty Name="twelveMDF" ColumnName="twelveMDF" />
+          <ScalarProperty Name="nineMDF" ColumnName="nineMDF" />
+          <ScalarProperty Name="runners_" ColumnName="runners " />
+          <ScalarProperty Name="pushToOpen" ColumnName="pushToOpen" />
+          <ScalarProperty Name="threeBy" ColumnName="threeBy" />
+          <ScalarProperty Name="paint" ColumnName="paint" />
+          <ScalarProperty Name="Agreed" ColumnName="Agreed" />
+          <ScalarProperty Name="Done" ColumnName="Done" />
+          <ScalarProperty Name="QuoteDate" ColumnName="QuoteDate" />
+          <ScalarProperty Name="AgreedDate" ColumnName="AgreedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

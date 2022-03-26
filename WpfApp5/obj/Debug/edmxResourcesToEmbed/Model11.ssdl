@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="flourModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'flour.dbo.Quote' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Quote">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="50" />
+    <Property Name="number" Type="int" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="flourModelStoreContainer">
+    <EntitySet Name="Quote" EntityType="Self.Quote" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Quote].[id] AS [id], 
+    [Quote].[name] AS [name], 
+    [Quote].[address] AS [address], 
+    [Quote].[number] AS [number], 
+    [Quote].[email] AS [email]
+    FROM [dbo].[Quote] AS [Quote]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
