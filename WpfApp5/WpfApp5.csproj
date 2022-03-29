@@ -70,9 +70,6 @@
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>jobbs.tt</DependentUpon>
     </Compile>
-    <Compile Include="FinishedTable.cs">
-      <DependentUpon>jobbs.tt</DependentUpon>
-    </Compile>
     <Compile Include="jobbs.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,6 +94,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>jobbs.tt</DependentUpon>
     </Compile>
+    <Compile Include="UpdateJob.xaml.cs">
+      <DependentUpon>UpdateJob.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reciept.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateJob.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

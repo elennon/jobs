@@ -1,0 +1,50 @@
+﻿<Window x:Class="WpfApp5.UpdateJob"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+        Title="UpdateJob" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <TextBlock Text="Update job" FontSize="20" Margin="30" ></TextBlock>
+            </DockPanel>
+            <DockPanel Background="Bisque">
+                <StackPanel DockPanel.Dock="Left">
+                    <ListView Margin="10,10,0,13" Name="jobsDone" HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Width="400" Height="400" SelectionChanged="jobsDone_SelectionChanged">
+                        
+                    </ListView>
+                    <TextBlock>customer</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="customerName"
+                Height="30px"
+                Width="200px"
+                Margin="10,10,10,10"></TextBox>
+                    <TextBlock>time spent</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="timeSpent"
+                Height="30px"
+                Width="200px"
+                Margin="10,10,10,10"></TextBox>
+                    <StackPanel Margin="10">
+                        <Label FontWeight="Bold">paid by</Label>
+                        <RadioButton Name="paidByCash" >cash</RadioButton>
+                        <RadioButton Name="paidByTransfer" >Transfer</RadioButton>
+                    </StackPanel>
+                    <TextBlock>date finished</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="finishDate"
+                Height="30px"
+                Width="200px"
+                Margin="10,10,10,10">0</TextBox>
+                    <Button Name="btn1" Background="Pink" HorizontalAlignment="Left"
+                    BorderBrush="Black" BorderThickness="1" 
+                    Click="updateJob_Click" >
+                        update
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+           
+        </DockPanel>
+    </Grid>
+</Window>

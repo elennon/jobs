@@ -14,7 +14,11 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="flourModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
-          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="payedByTransfer" ColumnName="payedByTransfer" />
+          <ScalarProperty Name="payedByCash" ColumnName="payedByCash" />
+          <ScalarProperty Name="timeTaken" ColumnName="timeTaken" />
+          <ScalarProperty Name="finishDate" ColumnName="finishDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Address" ColumnName="Address" />
@@ -47,16 +51,6 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="FinishedTables">
-      <EntityTypeMapping TypeName="flourModel.FinishedTable">
-        <MappingFragment StoreEntitySet="FinishedTable">
-          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
-          <ScalarProperty Name="finishDate" ColumnName="finishDate" />
-          <ScalarProperty Name="timeTaken" ColumnName="timeTaken" />
-          <ScalarProperty Name="payedBy" ColumnName="payedBy" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

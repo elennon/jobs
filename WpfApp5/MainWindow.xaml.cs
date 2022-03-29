@@ -23,7 +23,7 @@ namespace WpfApp5
     {
         Reciept reciept = new Reciept();
         NewCustomer newCustomer = new NewCustomer();
-        //UpdateJob UpdateJob = new UpdateJob();
+        UpdateJob UpdateJob = new UpdateJob();
         public MainWindow()
         {
             InitializeComponent();
@@ -34,11 +34,11 @@ namespace WpfApp5
         {
             using (var context = new flourEntities2())
             {
-                var jobs = await context.Customers.AsNoTracking().Where(x => x.Agreed == true).OrderBy(y => y.AgreedDate).ToListAsync();
+                var jobs = await context.Customers.AsNoTracking().Where(x => x.Agreed == true && x.Finished == false).OrderBy(y => y.AgreedDate).ToListAsync();
                 double days = 0;
                 foreach (Customer job in jobs)
                 {
-                    jobsComingUp.Items.Add( job.Name + "  ..... " + getDaysSinceAgreed(job.AgreedDate));
+                    jobsComingUp.Items.Add( job.Name + " ... " + job.Address + "  ..... " + getDaysSinceAgreed(job.AgreedDate));
                     days += job.Time;
                 }
                 jobsComingUp.Items.Add("");
@@ -59,12 +59,12 @@ namespace WpfApp5
 
         private void newCustomerClick(object sender, RoutedEventArgs e)
         {
-
+            newCustomer.Show();
         }
 
         private void updateCustomerClick(object sender, RoutedEventArgs e)
         {
-
+            UpdateJob.Show();
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)

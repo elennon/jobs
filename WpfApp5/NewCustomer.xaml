@@ -121,13 +121,10 @@
                     <DatePicker SelectedDateFormat="Long" IsTodayHighlighted="True" Name="dateAgreed"
                   DisplayDateStart="1/01/22" DisplayDateEnd="12/31/22" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left"
                   FirstDayOfWeek="Monday"/>
-                    <TextBlock>state</TextBlock>
-                    <StackPanel Height="30px"
-                        Width="200px"
-                        Margin="10,10,10,10" HorizontalAlignment="Left">
-                        <Label FontWeight="Bold">Job state</Label>
-                        <CheckBox IsChecked="True">Quote</CheckBox>
-                        <CheckBox>Agreed</CheckBox>
+                    <StackPanel Margin="10">
+                        <Label FontWeight="Bold">state</Label>
+                        <RadioButton Name="agreedRd" >Agreed</RadioButton>
+                        <RadioButton Name="finishedRd" >Finished</RadioButton>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>

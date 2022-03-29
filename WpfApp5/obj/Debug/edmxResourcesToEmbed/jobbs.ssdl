@@ -12,9 +12,9 @@
   </EntityType>
   <EntityType Name="Customers">
     <Key>
-      <PropertyRef Name="KeyId" />
+      <PropertyRef Name="CustomerId" />
     </Key>
-    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" />
     <Property Name="Email" Type="nvarchar(max)" />
     <Property Name="Address" Type="nvarchar(max)" />
@@ -36,17 +36,10 @@
     <Property Name="QuoteDate" Type="datetime" />
     <Property Name="AgreedDate" Type="datetime" />
     <Property Name="Finished" Type="bit" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'flour.dbo.FinishedTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="FinishedTable">
-    <Key>
-      <PropertyRef Name="KeyId" />
-    </Key>
-    <Property Name="KeyId" Type="int" Nullable="false" />
-    <Property Name="finishDate" Type="smalldatetime" />
-    <Property Name="timeTaken" Type="real" />
-    <Property Name="payedBy" Type="bit" />
+    <Property Name="finishDate" Type="datetime" />
+    <Property Name="timeTaken" Type="float" />
+    <Property Name="payedByCash" Type="bit" />
+    <Property Name="payedByTransfer" Type="bit" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -58,33 +51,9 @@ warning 6002: The table/view 'flour.dbo.FinishedTable' does not have a primary k
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK_FinishedTable_Customers">
-    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
-    <End Role="FinishedTable" Type="Self.FinishedTable" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="KeyId" />
-      </Principal>
-      <Dependent Role="FinishedTable">
-        <PropertyRef Name="KeyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="flourModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="FinishedTable" EntityType="Self.FinishedTable" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [FinishedTable].[KeyId] AS [KeyId], 
-    [FinishedTable].[finishDate] AS [finishDate], 
-    [FinishedTable].[timeTaken] AS [timeTaken], 
-    [FinishedTable].[payedBy] AS [payedBy]
-    FROM [dbo].[FinishedTable] AS [FinishedTable]</DefiningQuery>
-    </EntitySet>
-    <AssociationSet Name="FK_FinishedTable_Customers" Association="Self.FK_FinishedTable_Customers">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="FinishedTable" EntitySet="FinishedTable" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

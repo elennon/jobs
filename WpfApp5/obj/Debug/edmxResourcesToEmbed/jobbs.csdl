@@ -12,9 +12,8 @@
   </EntityType>
   <EntityType Name="Customer">
     <Key>
-      <PropertyRef Name="KeyId" />
+      <PropertyRef Name="CustomerId" />
     </Key>
-    <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -36,7 +35,11 @@
     <Property Name="QuoteDate" Type="DateTime" Precision="3" />
     <Property Name="AgreedDate" Type="DateTime" Precision="3" />
     <Property Name="Finished" Type="Boolean" />
-    <NavigationProperty Name="FinishedTable" Relationship="Self.FK_FinishedTable_Customers" FromRole="Customers" ToRole="FinishedTable" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="finishDate" Type="DateTime" Precision="3" />
+    <Property Name="timeTaken" Type="Double" />
+    <Property Name="payedByCash" Type="Boolean" />
+    <Property Name="payedByTransfer" Type="Boolean" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -48,36 +51,9 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="FinishedTable">
-    <Key>
-      <PropertyRef Name="KeyId" />
-    </Key>
-    <Property Name="KeyId" Type="Int32" Nullable="false" />
-    <Property Name="finishDate" Type="DateTime" Precision="0" />
-    <Property Name="timeTaken" Type="Single" />
-    <Property Name="payedBy" Type="Boolean" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK_FinishedTable_Customers" FromRole="FinishedTable" ToRole="Customers" />
-  </EntityType>
-  <Association Name="FK_FinishedTable_Customers">
-    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
-    <End Role="FinishedTable" Type="Self.FinishedTable" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="KeyId" />
-      </Principal>
-      <Dependent Role="FinishedTable">
-        <PropertyRef Name="KeyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="flourEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="FinishedTables" EntityType="Self.FinishedTable" />
-    <AssociationSet Name="FK_FinishedTable_Customers" Association="Self.FK_FinishedTable_Customers">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="FinishedTable" EntitySet="FinishedTables" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

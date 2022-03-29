@@ -28,6 +28,5 @@ namespace WpfApp5
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<FinishedTable> FinishedTables { get; set; }
     }
 }

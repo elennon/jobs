@@ -18,7 +18,7 @@
         </Menu>
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
-                <TextBlock Text="Tall Unit" FontSize="20" Margin="30" ></TextBlock>
+                <TextBlock Text="Upcoming jobs" FontSize="20" Margin="30" ></TextBlock>
             </DockPanel>
             <DockPanel Background="Bisque">
                 <StackPanel DockPanel.Dock="Left">

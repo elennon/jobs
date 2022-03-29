@@ -28,7 +28,7 @@ namespace WpfApp5
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
             Customer customer = new Customer();
-            customer.KeyId = new Random().Next();
+            //customer.KeyId = new Random().Next();
             customer.Name = customerName.Text.ToString();
             customer.Number = customerNumber.Text.ToString();
             customer.Email = customerEmail.Text.ToString();
@@ -85,8 +85,8 @@ namespace WpfApp5
             {
                 customer.Paint = Int32.Parse(paint.Text);
             }
-            customer.Agreed = false;
-
+            if ((bool)agreedRd.IsChecked) { customer.Agreed = true; } else { customer.Agreed = false; }
+            if ((bool)finishedRd.IsChecked) { customer.Finished = true; } else { customer.Finished = false; }
 
             using (var context = new flourEntities2())
             {

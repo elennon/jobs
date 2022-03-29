@@ -14,7 +14,6 @@ namespace WpfApp5
     
     public partial class Customer
     {
-        public int KeyId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
@@ -36,7 +35,10 @@ namespace WpfApp5
         public Nullable<System.DateTime> QuoteDate { get; set; }
         public Nullable<System.DateTime> AgreedDate { get; set; }
         public Nullable<bool> Finished { get; set; }
-    
-        public virtual FinishedTable FinishedTable { get; set; }
+        public int CustomerId { get; set; }
+        public Nullable<System.DateTime> finishDate { get; set; }
+        public Nullable<double> timeTaken { get; set; }
+        public Nullable<bool> payedByCash { get; set; }
+        public Nullable<bool> payedByTransfer { get; set; }
     }
 }
