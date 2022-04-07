@@ -29,7 +29,7 @@
                 <StackPanel DockPanel.Dock="Right">
 
 
-                    <ComboBox Name="cmbMonths" SelectionChanged="cmbMonths_SelectionChanged">
+                    <ComboBox Name="cmbMonths" Margin="10,10,0,13" Width="200px" HorizontalAlignment="Left" SelectionChanged="cmbMonths_SelectionChanged" >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -49,6 +49,9 @@
                 Height="30px"
                 Width="200px"
                 Margin="10,10,10,10">0</TextBox>
+                    <ListView Margin="10,10,0,13" Name="jobsDoneByMonth" HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Width="300" Height="300">
+                    </ListView>
                 </StackPanel>
             </DockPanel>
         </DockPanel>

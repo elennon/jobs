@@ -32,8 +32,10 @@ namespace WpfApp5
             getUpComingJobs();
             var startDate = DateTime.ParseExact("01/01/2022", "MM/dd/yyyy", new CultureInfo("en-IE"));
             var endDate = DateTime.Now;
-            var dfdf = MonthsBetween(startDate, endDate);
-            cmbMonths.ItemsSource = MonthsBetween(startDate, endDate);
+            var monthsTill = MonthsBetween(startDate, endDate);
+            cmbMonths.ItemsSource = monthsTill;
+            cmbMonths.SelectedIndex = Convert.ToInt32(monthsTill.LongCount()) - 1;
+            getFinishedJobsByMonth(monthsTill.Last().Monthh);
         }
 
         public static IEnumerable<Months> MonthsBetween(
@@ -88,6 +90,18 @@ namespace WpfApp5
             }
         }
 
+        private async void getFinishedJobsByMonth(int month)
+        {
+            using (var context = new flourEntities2())
+            {
+                var jobs = await context.Customers.AsNoTracking().Where(x => x.Finished == true && x.finishDate.Value.Month == month).OrderBy(y => y.AgreedDate).ToListAsync();
+                foreach (Customer job in jobs)
+                {
+                    jobsDoneByMonth.Items.Add(job.Name + " ... " + job.Address + "  ..... " + getDaysSinceAgreed(job.finishDate));
+                }
+            }
+        }
+
         private string getDaysSinceAgreed(DateTime? agreedDate)
         {
 
@@ -132,6 +146,8 @@ namespace WpfApp5
                 }
                 doshMade.Text = made.ToString();
             }
+            jobsDoneByMonth.Items.Clear();
+            getFinishedJobsByMonth(m.Monthh);
         }
     }
 
