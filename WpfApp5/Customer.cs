@@ -31,10 +31,10 @@ namespace WpfApp5
         public int PushToOpen { get; set; }
         public int ThreeBy { get; set; }
         public int Paint { get; set; }
-        public Nullable<bool> Agreed { get; set; }
+        public bool Agreed { get; set; }
         public Nullable<System.DateTime> QuoteDate { get; set; }
         public Nullable<System.DateTime> AgreedDate { get; set; }
-        public Nullable<bool> Finished { get; set; }
+        public bool Finished { get; set; }
         public int CustomerId { get; set; }
         public Nullable<System.DateTime> finishDate { get; set; }
         public Nullable<double> timeTaken { get; set; }

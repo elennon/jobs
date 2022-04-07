@@ -40,9 +40,13 @@ namespace WpfApp5
             {
                 customer.Time = Convert.ToDouble(time.Text);
             }
-            if (angle.Text != "")
+            if (price.Text != "")
             {
                 customer.Price = Int32.Parse(price.Text);
+            }
+            else
+            {
+                MessageBox.Show("price please");
             }
 
             DateTime? quoteDate = dateOfQuote.SelectedDate;

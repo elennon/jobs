@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp5"
         mc:Ignorable="d"
-        Title="UpdateJob" Height="450" Width="800">
+        Title="UpdateJob" Height="800" Width="800">
     <Grid>
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
@@ -14,7 +14,7 @@
             <DockPanel Background="Bisque">
                 <StackPanel DockPanel.Dock="Left">
                     <ListView Margin="10,10,0,13" Name="jobsDone" HorizontalAlignment="Left" VerticalAlignment="Top"
-                              Width="400" Height="400" SelectionChanged="jobsDone_SelectionChanged">
+                              Width="400" Height="300" SelectionChanged="jobsDone_SelectionChanged">
                         
                     </ListView>
                     <TextBlock>customer</TextBlock>
@@ -40,7 +40,7 @@
                     <Button Name="btn1" Background="Pink" HorizontalAlignment="Left"
                     BorderBrush="Black" BorderThickness="1" 
                     Click="updateJob_Click" >
-                        update
+                        mark as done
                     </Button>
                 </StackPanel>
             </DockPanel>

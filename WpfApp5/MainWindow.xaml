@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfApp5"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800">
+    
     <Grid>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
@@ -23,12 +24,33 @@
             <DockPanel Background="Bisque">
                 <StackPanel DockPanel.Dock="Left">
                     <ListView Margin="10,10,0,13" Name="jobsComingUp" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="400">
-
                     </ListView>
                 </StackPanel>
-                
+                <StackPanel DockPanel.Dock="Right">
+
+
+                    <ComboBox Name="cmbMonths" SelectionChanged="cmbMonths_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding MonthName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <TextBlock>spent</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="spent"
+                Height="30px"
+                Width="200px"
+                Margin="10,10,10,10">0</TextBox>
+                    <TextBlock>made</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="doshMade"
+                Height="30px"
+                Width="200px"
+                Margin="10,10,10,10">0</TextBox>
+                </StackPanel>
             </DockPanel>
-            
         </DockPanel>
     </Grid>
 </Window>

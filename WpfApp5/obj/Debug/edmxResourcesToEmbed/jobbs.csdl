@@ -31,10 +31,10 @@
     <Property Name="PushToOpen" Type="Int32" Nullable="false" />
     <Property Name="ThreeBy" Type="Int32" Nullable="false" />
     <Property Name="Paint" Type="Int32" Nullable="false" />
-    <Property Name="Agreed" Type="Boolean" />
+    <Property Name="Agreed" Type="Boolean" Nullable="false" />
     <Property Name="QuoteDate" Type="DateTime" Precision="3" />
     <Property Name="AgreedDate" Type="DateTime" Precision="3" />
-    <Property Name="Finished" Type="Boolean" />
+    <Property Name="Finished" Type="Boolean" Nullable="false" />
     <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="finishDate" Type="DateTime" Precision="3" />
     <Property Name="timeTaken" Type="Double" />
@@ -55,5 +55,15 @@
     <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="receipts" EntityType="flourModel.receipt" />
   </EntityContainer>
+  <EntityType Name="receipt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="spent" Type="Double" />
+    <Property Name="dateBought" Type="DateTime" Precision="0" />
+  </EntityType>
 </Schema>

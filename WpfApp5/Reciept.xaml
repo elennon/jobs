@@ -14,21 +14,19 @@
             <DockPanel Background="Bisque">
                 <StackPanel DockPanel.Dock="Left">
                     <TextBlock>supplier</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="customerName"
+                    <TextBox HorizontalAlignment="Left" x:Name ="supplierName"
                 Height="30px"
                 Width="200px"
                 Margin="10,10,10,10"></TextBox>
                     <TextBlock>spent</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="customerEmail"
+                    <TextBox HorizontalAlignment="Left" x:Name ="spent"
                 Height="30px"
                 Width="200px"
                 Margin="10,10,10,10"></TextBox>
-                    <TextBlock>date</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="customerAddress"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10">0</TextBox>
-
+                    <TextBlock>date bought</TextBlock>
+                    <DatePicker SelectedDateFormat="Long" IsTodayHighlighted="True" Name="dateBought"
+                  DisplayDateStart="1/01/22" DisplayDateEnd="12/31/22" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left"
+                  FirstDayOfWeek="Monday"/>
 
                     <Button Name="btn1" Background="Pink" HorizontalAlignment="Left"
                     BorderBrush="Black" BorderThickness="1" 
@@ -37,9 +35,6 @@
                     </Button>
                 </StackPanel>
             </DockPanel>
-            <ListView Margin="10,10,0,13" Name="spentByShop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="400">
-
-            </ListView>
         </DockPanel>
     </Grid>
 </Window>

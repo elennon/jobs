@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +29,44 @@ namespace WpfApp5
         public MainWindow()
         {
             InitializeComponent();
-            getUpComingJobs();         
+            getUpComingJobs();
+            var startDate = DateTime.ParseExact("01/01/2022", "MM/dd/yyyy", new CultureInfo("en-IE"));
+            var endDate = DateTime.Now;
+            var dfdf = MonthsBetween(startDate, endDate);
+            cmbMonths.ItemsSource = MonthsBetween(startDate, endDate);
+        }
+
+        public static IEnumerable<Months> MonthsBetween(
+        DateTime startDate,
+        DateTime endDate)
+        {
+            DateTime iterator;
+            DateTime limit;
+            
+
+            if (endDate > startDate)
+            {
+                iterator = new DateTime(startDate.Year, startDate.Month, 1);
+                limit = endDate;
+            }
+            else
+            {
+                iterator = new DateTime(endDate.Year, endDate.Month, 1);
+                limit = startDate;
+            }
+
+            var dateTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat;
+            while (iterator <= limit)
+            {
+                Months mm = new Months();
+                mm.Monthh = iterator.Month; // 
+                mm.Yearr = iterator.Year;
+                mm.MonthName = dateTimeFormat.GetMonthName(iterator.Month);
+                yield return (
+                    mm                    
+                );
+                iterator = iterator.AddMonths(1);
+            }
         }
 
         private async void getUpComingJobs()
@@ -67,14 +106,87 @@ namespace WpfApp5
             UpdateJob.Show();
         }
 
-        private void btn2_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void Receipt_Click(object sender, RoutedEventArgs e)
         {
             reciept.Show();
         }
+
+        private async void cmbMonths_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Months m = new Months();
+            m = (Months)cmbMonths.SelectedItem;
+            using (var context = new flourEntities2())
+            {
+                double? tot = 0;
+                var invoices = await context.receipts.AsNoTracking().Where(x => x.dateBought.Value.Month == m.Monthh).ToListAsync();
+                foreach (receipt rec in invoices)
+                {
+                    tot += rec.spent;
+                }
+                spent.Text = tot.ToString();
+                double? made = 0;
+                var jobsDone = await context.Customers.AsNoTracking().Where(x => x.Finished == true && x.finishDate.Value.Month == m.Monthh).ToListAsync();
+                foreach (Customer job in jobsDone)
+                {
+                    made += job.Price;
+                }
+                doshMade.Text = made.ToString();
+            }
+        }
     }
-}
+
+    public class Months
+    {
+        private int nameValue;
+        public int Monthh
+        {
+            get
+            {
+                return nameValue;
+            }
+            set
+            {
+                nameValue = value;
+            }
+        }
+
+        private string monthNmaeameValue;
+        public string MonthName
+        {
+            get
+            {
+                return monthNmaeameValue;
+            }
+            set
+            {
+                monthNmaeameValue = value;
+            }
+        }
+        private int yearValue;
+        private object selectedItem;
+
+        public Months(object selectedItem)
+        {
+            this.selectedItem = selectedItem;
+        }
+
+        public Months()
+        {
+        }
+
+        public int Yearr
+        {
+            get
+            {
+                return yearValue;
+            }
+            set
+            {
+                if (value != yearValue)
+                {
+                    yearValue = value;
+                }
+            }
+        }
+    }
+    }

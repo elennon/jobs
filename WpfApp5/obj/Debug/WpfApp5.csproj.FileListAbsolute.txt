@@ -1,7 +1,8 @@
+C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\WpfApp5.exe.config
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\WpfApp5.exe
+C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\WpfApp5.pdb
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\EntityFramework.dll
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\WpfApp5.exe.config
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\EntityFramework.xml
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.csproj.AssemblyReference.cache
@@ -25,4 +26,3 @@ C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.csproj.CoreCompileI
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.csproj.CopyComplete
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.exe
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.pdb
-C:\Users\Asus\source\repos\WpfApp5\WpfApp5\bin\Debug\WpfApp5.pdb

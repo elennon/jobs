@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,26 @@ namespace WpfApp5
 
         private void addReceipt_Click(object sender, RoutedEventArgs e)
         {
-
+            using (var context = new flourEntities2())
+            {
+                var rec = new receipt();
+                rec.id = new Random().Next();
+                rec.supplier = supplierName.Text;
+                DateTime ? ff = dateBought.SelectedDate;
+                if (ff == null)
+                {
+                    MessageBox.Show("No date");
+                }
+                else
+                {
+                    rec.dateBought = ff;
+                }
+                rec.spent = Convert.ToDouble(spent.Text);
+                
+                context.receipts.Add(rec);
+                context.SaveChanges();
+                MessageBox.Show("done and done");
+            }
         }
     }
 }

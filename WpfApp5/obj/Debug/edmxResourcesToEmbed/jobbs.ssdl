@@ -32,14 +32,23 @@
     <Property Name="PushToOpen" Type="int" Nullable="false" />
     <Property Name="ThreeBy" Type="int" Nullable="false" />
     <Property Name="Paint" Type="int" Nullable="false" />
-    <Property Name="Agreed" Type="bit" />
+    <Property Name="Agreed" Type="bit" Nullable="false" />
     <Property Name="QuoteDate" Type="datetime" />
     <Property Name="AgreedDate" Type="datetime" />
-    <Property Name="Finished" Type="bit" />
+    <Property Name="Finished" Type="bit" Nullable="false" />
     <Property Name="finishDate" Type="datetime" />
     <Property Name="timeTaken" Type="float" />
     <Property Name="payedByCash" Type="bit" />
     <Property Name="payedByTransfer" Type="bit" />
+  </EntityType>
+  <EntityType Name="receipt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="supplier" Type="nvarchar" MaxLength="50" />
+    <Property Name="spent" Type="float" />
+    <Property Name="dateBought" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -54,6 +63,7 @@
   <EntityContainer Name="flourModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="receipt" EntityType="Self.receipt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

@@ -54,5 +54,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="receipts">
+      <EntityTypeMapping TypeName="flourModel.receipt">
+        <MappingFragment StoreEntitySet="receipt">
+          <ScalarProperty Name="dateBought" ColumnName="dateBought" />
+          <ScalarProperty Name="spent" ColumnName="spent" />
+          <ScalarProperty Name="supplier" ColumnName="supplier" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

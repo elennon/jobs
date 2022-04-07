@@ -88,6 +88,9 @@
     <Compile Include="NewCustomer.xaml.cs">
       <DependentUpon>NewCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="receipt.cs">
+      <DependentUpon>jobbs.tt</DependentUpon>
+    </Compile>
     <Compile Include="Reciept.xaml.cs">
       <DependentUpon>Reciept.xaml</DependentUpon>
     </Compile>

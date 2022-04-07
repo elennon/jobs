@@ -33,10 +33,10 @@ namespace WpfApp5
         {
             using (var context = new flourEntities2())
             {
-                var jobs = await context.Customers.AsNoTracking().ToListAsync();
+                var jobs = await context.Customers.AsNoTracking().Where(x => x.Agreed == true && x.Finished == false).ToListAsync();
                 foreach (Customer job in jobs)
                 {
-                    jobsDone.Items.Add( job.Name + " ... " + job.Address );
+                    jobsDone.Items.Add( job.Name + "-" + job.Address );
                 }
             }
         }
@@ -45,9 +45,10 @@ namespace WpfApp5
         {
             using (var context = new flourEntities2())
             {
-                var custName = jobsDone.SelectedItem.ToString().Split(' ')[0];
-                var custAddress = jobsDone.SelectedItem.ToString().Split(' ')[2];//.Split(' ')[1];
-                customerList = await context.Customers.AsNoTracking().Where(x => x.Name == custName || x.Address == custAddress).ToListAsync();
+                var gfgfgf = jobsDone.SelectedItem.ToString().Split('-');
+                var custName = jobsDone.SelectedItem.ToString().Split('-')[0];
+                var custAddress = jobsDone.SelectedItem.ToString().Split('-')[1];//.Split(' ')[1];
+                customerList = await context.Customers.AsNoTracking().Where(x => x.Name == custName && x.Address == custAddress).ToListAsync();
                 customerName.Text = customerList.First().Name;
                 custId = customerList.First().CustomerId;
             }

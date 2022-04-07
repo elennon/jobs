@@ -37,14 +37,23 @@
           <Property Name="PushToOpen" Type="int" Nullable="false" />
           <Property Name="ThreeBy" Type="int" Nullable="false" />
           <Property Name="Paint" Type="int" Nullable="false" />
-          <Property Name="Agreed" Type="bit" />
+          <Property Name="Agreed" Type="bit" Nullable="false" />
           <Property Name="QuoteDate" Type="datetime" />
           <Property Name="AgreedDate" Type="datetime" />
-          <Property Name="Finished" Type="bit" />
+          <Property Name="Finished" Type="bit" Nullable="false" />
           <Property Name="finishDate" Type="datetime" />
           <Property Name="timeTaken" Type="float" />
           <Property Name="payedByCash" Type="bit" />
           <Property Name="payedByTransfer" Type="bit" />
+        </EntityType>
+        <EntityType Name="receipt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="supplier" Type="nvarchar" MaxLength="50" />
+          <Property Name="spent" Type="float" />
+          <Property Name="dateBought" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -59,6 +68,7 @@
         <EntityContainer Name="flourModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="receipt" EntityType="Self.receipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -96,10 +106,10 @@
           <Property Name="PushToOpen" Type="Int32" Nullable="false" />
           <Property Name="ThreeBy" Type="Int32" Nullable="false" />
           <Property Name="Paint" Type="Int32" Nullable="false" />
-          <Property Name="Agreed" Type="Boolean" />
+          <Property Name="Agreed" Type="Boolean" Nullable="false" />
           <Property Name="QuoteDate" Type="DateTime" Precision="3" />
           <Property Name="AgreedDate" Type="DateTime" Precision="3" />
-          <Property Name="Finished" Type="Boolean" />
+          <Property Name="Finished" Type="Boolean" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="finishDate" Type="DateTime" Precision="3" />
           <Property Name="timeTaken" Type="Double" />
@@ -120,7 +130,17 @@
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="receipts" EntityType="flourModel.receipt" />
         </EntityContainer>
+        <EntityType Name="receipt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="spent" Type="Double" />
+          <Property Name="dateBought" Type="DateTime" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -177,6 +197,16 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receipts">
+            <EntityTypeMapping TypeName="flourModel.receipt">
+              <MappingFragment StoreEntitySet="receipt">
+                <ScalarProperty Name="dateBought" ColumnName="dateBought" />
+                <ScalarProperty Name="spent" ColumnName="spent" />
+                <ScalarProperty Name="supplier" ColumnName="supplier" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
