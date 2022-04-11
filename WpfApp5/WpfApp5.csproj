@@ -67,9 +67,13 @@
     <Compile Include="Customer.cs">
       <DependentUpon>jobbs.tt</DependentUpon>
     </Compile>
+    <Compile Include="CutList.xaml.cs">
+      <DependentUpon>CutList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>jobbs.tt</DependentUpon>
     </Compile>
+    <Compile Include="Drawers.cs" />
     <Compile Include="jobbs.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,6 +104,10 @@
     <Compile Include="UpdateJob.xaml.cs">
       <DependentUpon>UpdateJob.xaml</DependentUpon>
     </Compile>
+    <Page Include="CutList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

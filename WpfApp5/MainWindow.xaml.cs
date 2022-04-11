@@ -26,6 +26,7 @@ namespace WpfApp5
         Reciept reciept = new Reciept();
         NewCustomer newCustomer = new NewCustomer();
         UpdateJob UpdateJob = new UpdateJob();
+        CutList cutList = new CutList();
         public MainWindow()
         {
             InitializeComponent();
@@ -125,6 +126,11 @@ namespace WpfApp5
             reciept.Show();
         }
 
+        private void cutList_Click(object sender, RoutedEventArgs e)
+        {
+            cutList.Show();
+        }
+
         private async void cmbMonths_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Months m = new Months();
@@ -149,6 +155,8 @@ namespace WpfApp5
             jobsDoneByMonth.Items.Clear();
             getFinishedJobsByMonth(m.Monthh);
         }
+
+        
     }
 
     public class Months

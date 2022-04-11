@@ -26,3 +26,5 @@ C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.csproj.CoreCompileI
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.csproj.CopyComplete
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.exe
 C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\WpfApp5.pdb
+C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\CutList.g.cs
+C:\Users\Asus\source\repos\WpfApp5\WpfApp5\obj\Debug\CutList.baml

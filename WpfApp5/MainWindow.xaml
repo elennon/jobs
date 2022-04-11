@@ -13,6 +13,7 @@
                 <MenuItem Header="_New Quote" Click="newCustomerClick" />
                 <MenuItem Header="update job" Click="updateCustomerClick" />
                 <MenuItem Header="_Save Receipt" Click="Receipt_Click"/>
+                <MenuItem Header="_Cut List" Click="cutList_Click"/>
                 <Separator />
                 <MenuItem Header="_Exit" />
             </MenuItem>
