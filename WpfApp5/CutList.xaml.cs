@@ -26,6 +26,7 @@ namespace WpfApp5
 
         private void cuttingList_Click(object sender, RoutedEventArgs e)
         {
+
             Drawers unit = new Drawers(Int32.Parse(width.Text),
                 Int32.Parse(fullHeight.Text),
                 Int32.Parse(kicker.Text),

@@ -14,7 +14,7 @@ namespace WpfApp5
         public int kicker = 0;
         public int lowSideHeight = 0;
         public int flatTopWidth = 0;
-        public int cuttingAngle = 0;
+        public double cuttingAngle = 0;
         public int drawerNumber = 3;
         public int depth;
         public int drawerSectionWidth;
@@ -43,7 +43,9 @@ namespace WpfApp5
         public void getCuttingList(Drawers understairDrawerUnit)
         {
             var cutList = new List<cut>();
+            var origlowside = understairDrawerUnit.lowSideHeight;
             bottomCornerOfAngle = getBottomCornerTipExtraBit(understairDrawerUnit);
+            checkAngle(understairDrawerUnit, origlowside);
             cutList.AddRange(getDrawerFrame(understairDrawerUnit.baseWidth,
                 understairDrawerUnit.cuttingAngle, understairDrawerUnit.tallUnitWidth,
                 understairDrawerUnit.lowSideHeight, understairDrawerUnit.drawerNumber
@@ -53,6 +55,19 @@ namespace WpfApp5
             if(understairDrawerUnit.hasTallUnit) cutList.AddRange(GetTallUnit(understairDrawerUnit));
             PrintOut(cutList);
             MessageBox.Show("done");
+        }
+
+        private void checkAngle(Drawers understairDrawerUnit, int origlowside)
+        {
+            double a = Convert.ToDouble(understairDrawerUnit.baseWidth);
+            double b = Convert.ToDouble(understairDrawerUnit.sideHeight - origlowside);
+            double tangle = Math.Atan(a / 
+                b) * (180 / Math.PI);
+            if (understairDrawerUnit.cuttingAngle != tangle)
+            {
+                MessageBox.Show("given angle -- " + understairDrawerUnit.cuttingAngle + " -- calculated -- " + tangle);
+            }
+            understairDrawerUnit.cuttingAngle = tangle;
         }
 
         private IEnumerable<cut> GetTallUnit(Drawers understairDrawerUnit)
@@ -127,7 +142,7 @@ namespace WpfApp5
             return drawers;
         }
 
-        private List<cut> getDrawerFrame(int baseWidth, int cuttingAngle, int cabinetWidth,
+        private List<cut> getDrawerFrame(int baseWidth, double cuttingAngle, int cabinetWidth,
             int bottomUpstandHeight, int drawerNumber)
         {
             var drawerFrameCutList = new List<cut>();
@@ -181,7 +196,7 @@ namespace WpfApp5
             return drawerFrameCutList;
         }
 
-        private int getDrawerSectionWidth(int fullWidth, int cabinetWidth, int bottomUpstandHeight, int cuttingAngle)
+        private int getDrawerSectionWidth(int fullWidth, int cabinetWidth, int bottomUpstandHeight, double cuttingAngle)
         {
             var dw = ((fullWidth - bottomCornerOfAngle) - cabinetWidth) - 70;
             if (bottomUpstandHeight < 198)
@@ -193,17 +208,17 @@ namespace WpfApp5
         }
 
 
-        private int getHypot(int angle, int opposite)
+        private int getHypot(double angle, int opposite)
         {
             return Convert.ToInt32(opposite / Math.Sin(angle * (Math.PI / 180)));
         }
 
-        private int getAdjasent(int angle, int opposite)
+        private int getAdjasent(double angle, int opposite)
         {
             return Convert.ToInt32(opposite / Math.Tan(angle * (Math.PI / 180)));
         }
 
-        private int getOpposite(int angle, int adjasent)
+        private int getOpposite(double angle, int adjasent)
         {
             return Convert.ToInt32(adjasent * Math.Tan(angle * (Math.PI / 180)));
         }
