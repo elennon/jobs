@@ -22,10 +22,12 @@ namespace WpfApp5
         public int tallUnitWidth;
         public int bottomCornerOfAngle;
         public int plumbLineThroughTopDRawerFrame;
-        public bool hasTallUnit;   
+        public bool hasTallUnit;
+        public double eighteenMdfArea = 0;
+        public double twelveMdfArea = 0;
 
         public Drawers(int baseWidthP, int sideHeightP, int kickerP, int lowSideHeightP,
-            int flatTopWidthP, int angleP, int drawerNumberP,
+            int flatTopWidthP, double angleP, int drawerNumberP,
             int depthP, int tallUnitWidthP, bool hasTallUnitP)
         {
             baseWidth = baseWidthP;
@@ -54,7 +56,9 @@ namespace WpfApp5
             cutList.AddRange(GetDrawers(understairDrawerUnit));
             if(understairDrawerUnit.hasTallUnit) cutList.AddRange(GetTallUnit(understairDrawerUnit));
             PrintOut(cutList);
-            MessageBox.Show("done");
+            var noShts = (eighteenMdfArea + (eighteenMdfArea / 100 * 10)) / 2880000;
+            int i = (int)Math.Ceiling(noShts);
+            MessageBox.Show("done -- " + eighteenMdfArea.ToString());
         }
 
         private void checkAngle(Drawers understairDrawerUnit, int origlowside)
@@ -76,18 +80,23 @@ namespace WpfApp5
             var plumbTallUnitTop = getHypot(understairDrawerUnit.cuttingAngle, 48);
             var shrt = getAdjasent(cuttingAngle, bottomCornerOfAngle + drawerSectionWidth + 32 +18);
             tallUnit.Add(new cut(700, shrt - (plumbTallUnitTop + 78), 1, false, "tall unit short side toLong"));
+            eighteenMdfArea += 700 * shrt - (plumbTallUnitTop + 78);
 
             var lgs = getAdjasent(cuttingAngle, bottomCornerOfAngle + drawerSectionWidth + 32 + understairDrawerUnit.tallUnitWidth);
             tallUnit.Add(new cut(700, lgs - (plumbTallUnitTop + 78), 1, false, "tall unit short side toLong"));
+            eighteenMdfArea += 700 * lgs - (plumbTallUnitTop + 78);
             tallUnit.Add(new cut(700, understairDrawerUnit.tallUnitWidth - 36, 1, false, "tall unit base ( 2 for shelf..)"));
+            eighteenMdfArea += (700 * understairDrawerUnit.tallUnitWidth - 36) * 2;
 
             tallUnit.Add(new cut(700, getHypot(understairDrawerUnit.cuttingAngle, understairDrawerUnit.tallUnitWidth), 1, false, 
                 "tall unit top long to short"));
+            eighteenMdfArea += 700 * getHypot(understairDrawerUnit.cuttingAngle, understairDrawerUnit.tallUnitWidth);
             tallUnit.Add(new cut(lgs, understairDrawerUnit.tallUnitWidth, 1, false, "tall unit back 9mm"));
             if (understairDrawerUnit.tallUnitWidth > 600)
             {
                 tallUnit.Add(new cut(lgs, (understairDrawerUnit.tallUnitWidth / 2) - 5, 2, false, "tall unit double door"));
-            } else tallUnit.Add(new cut(lgs, understairDrawerUnit.tallUnitWidth - 3 , 1, false, "tall unit door"));
+                eighteenMdfArea += (lgs * (understairDrawerUnit.tallUnitWidth / 2) - 5) * 2;
+            } else tallUnit.Add(new cut(lgs, understairDrawerUnit.tallUnitWidth - 3 , 1, false, "tall unit door")); eighteenMdfArea += lgs * understairDrawerUnit.tallUnitWidth - 3;
 
             return tallUnit;
         }
@@ -134,11 +143,17 @@ namespace WpfApp5
                 noOfBigSide = 9; noOfSmallSide = 3; baseNumber = 6; middleSizeDrawers = 4; normalDrawerSize = 8; 
             }
             drawers.Add(new cut(230, dpt, noOfBigSide, false, "drawer long"));
+            eighteenMdfArea += (230 * dpt) * noOfBigSide;
             drawers.Add(new cut(100, dpt, noOfSmallSide, false, "drawer lodg"));
+            eighteenMdfArea += (100 * dpt) * noOfSmallSide;
             drawers.Add(new cut(230, drawerSectionUnit.opeOne - 63, normalDrawerSize, false, "drawer short"));
+            eighteenMdfArea += (230 * drawerSectionUnit.opeOne - 63) * normalDrawerSize;
             drawers.Add(new cut(230, drawerSectionUnit.opeTwo - 63, middleSizeDrawers, false, "drawer short"));
+            eighteenMdfArea += (230 * drawerSectionUnit.opeTwo - 63) * normalDrawerSize;
             drawers.Add(new cut(dpt, drawerSectionUnit.opeOne - 27, baseNumber, false, "drawer base 12mm"));
+            twelveMdfArea += (dpt * drawerSectionUnit.opeOne - 27) * baseNumber;
             drawers.Add(new cut(drawerSectionUnit.drwHeight, drawerSectionUnit.opeOne + 30, baseNumber, false, "drawer fronts"));
+            eighteenMdfArea += (drawerSectionUnit.drwHeight * drawerSectionUnit.opeOne + 30) * normalDrawerSize;
             return drawers;
         }
 

@@ -13,11 +13,17 @@
             </DockPanel>
             <DockPanel Background="Bisque">
                 <StackPanel DockPanel.Dock="Left">
-                    <TextBlock>supplier</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="supplierName"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10"></TextBox>
+                    <StackPanel Margin="10,10,10,10" Height="30px"
+                Width="200px">
+                        <TextBlock>supplier</TextBlock>
+                        <ComboBox Name="supplier" >
+                            <ComboBoxItem IsSelected="True">Noyaks</ComboBoxItem>
+                            <ComboBoxItem >Barrets</ComboBoxItem>
+                            <ComboBoxItem>Strahans</ComboBoxItem>
+                            <ComboBoxItem>Clearys</ComboBoxItem>
+                            <ComboBoxItem>Deisel</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
                     <TextBlock>spent</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="spent"
                 Height="30px"

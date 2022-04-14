@@ -17,12 +17,12 @@
                     <TextBox HorizontalAlignment="Left" x:Name ="width"
                 Height="30px"
                 Width="100px"
-                Margin="10,10,10,10">549</TextBox>
+                Margin="10,10,10,10">1925</TextBox>
                     <TextBlock>full height</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="fullHeight"
                 Height="30px"
                 Width="100px"
-                Margin="10,10,10,10">494</TextBox>
+                Margin="10,10,10,10">1880</TextBox>
                     <TextBlock>Kicker height</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="kicker"
                 Height="30px"
@@ -32,7 +32,7 @@
                     <TextBox HorizontalAlignment="Left" x:Name ="lowSideHeight"
                 Height="30px"
                 Width="100px"
-                Margin="10,10,10,10">0</TextBox>
+                Margin="10,10,10,10">183</TextBox>
                     <TextBlock>Flat top width</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="flatTopWidth"
                 Height="30px"
@@ -49,12 +49,12 @@
                     <TextBox HorizontalAlignment="Left" x:Name ="depth"
                 Height="30px"
                 Width="100px"
-                Margin="10,10,10,10">700</TextBox>
+                Margin="10,10,10,10">800</TextBox>
                     <TextBlock>tall cabinet</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="cabinetWidth"
                 Height="30px"
                 Width="100px"
-                Margin="10,10,10,10">30</TextBox>
+                Margin="10,10,10,10">600</TextBox>
                     <TextBlock>drawer number</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="drawerNumber"
                 Height="30px"

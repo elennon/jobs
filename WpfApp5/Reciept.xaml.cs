@@ -31,7 +31,7 @@ namespace WpfApp5
             {
                 var rec = new receipt();
                 rec.id = new Random().Next();
-                rec.supplier = supplierName.Text;
+                rec.supplier = supplier.SelectedItem.ToString();
                 DateTime ? ff = dateBought.SelectedDate;
                 if (ff == null)
                 {

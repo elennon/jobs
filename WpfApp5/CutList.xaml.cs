@@ -32,7 +32,7 @@ namespace WpfApp5
                 Int32.Parse(kicker.Text),
                 Int32.Parse(lowSideHeight.Text),
                 Int32.Parse(flatTopWidth.Text),
-                Int32.Parse(angle.Text),
+                Double.Parse(angle.Text),
                 Int32.Parse(drawerNumber.Text),
                 Int32.Parse(depth.Text),
                 Int32.Parse(cabinetWidth.Text),
