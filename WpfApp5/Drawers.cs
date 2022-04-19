@@ -25,10 +25,11 @@ namespace WpfApp5
         public bool hasTallUnit;
         public double eighteenMdfArea = 0;
         public double twelveMdfArea = 0;
+        public string unitType;
 
         public Drawers(int baseWidthP, int sideHeightP, int kickerP, int lowSideHeightP,
             int flatTopWidthP, double angleP, int drawerNumberP,
-            int depthP, int tallUnitWidthP, bool hasTallUnitP)
+            int depthP, int tallUnitWidthP, bool hasTallUnitP, string unitTypeP)
         {
             baseWidth = baseWidthP;
             sideHeight = sideHeightP;
@@ -40,14 +41,16 @@ namespace WpfApp5
             depth = depthP;
             tallUnitWidth = tallUnitWidthP;
             hasTallUnit = hasTallUnitP;
+            unitType = unitTypeP;
         }
 
         public void getCuttingList(Drawers understairDrawerUnit)
         {
             var cutList = new List<cut>();
-            var origlowside = understairDrawerUnit.lowSideHeight;
+            checkAngle(understairDrawerUnit);
+            
             bottomCornerOfAngle = getBottomCornerTipExtraBit(understairDrawerUnit);
-            checkAngle(understairDrawerUnit, origlowside);
+            
             cutList.AddRange(getDrawerFrame(understairDrawerUnit.baseWidth,
                 understairDrawerUnit.cuttingAngle, understairDrawerUnit.tallUnitWidth,
                 understairDrawerUnit.lowSideHeight, understairDrawerUnit.drawerNumber
@@ -56,21 +59,39 @@ namespace WpfApp5
             cutList.AddRange(GetDrawers(understairDrawerUnit));
             if(understairDrawerUnit.hasTallUnit) cutList.AddRange(GetTallUnit(understairDrawerUnit));
             PrintOut(cutList);
-            var noShts = (eighteenMdfArea + (eighteenMdfArea / 100 * 10)) / 2880000;
-            int i = (int)Math.Ceiling(noShts);
-            MessageBox.Show("done -- " + eighteenMdfArea.ToString());
+            getPrice(understairDrawerUnit);
+            
         }
 
-        private void checkAngle(Drawers understairDrawerUnit, int origlowside)
+        private void getPrice(Drawers understairDrawerUnit)
+        {
+            double price = 0;
+            var noShts = (eighteenMdfArea + (eighteenMdfArea / 100 * 10)) / 2880000;
+            int i = (int)Math.Ceiling(noShts);
+            price += i * 60;
+            var notvlvShts = (twelveMdfArea + (twelveMdfArea / 100 * 10)) / 2880000;
+            int itwlv = (int)Math.Ceiling(notvlvShts);
+            price += itwlv * 50;
+            if (understairDrawerUnit.drawerNumber == 3)
+            {
+                price += 45;
+            }
+            else price += 90;
+            price += 70; // for 3 by 1.5
+            price += 40; // paint
+            price += 30; // push to open
+            price += 15; // deisel
+            price += 8;  // fixings
+            //price += understairDrawerUnit.
+            MessageBox.Show("materials -- " + price.ToString());
+        }
+
+        private void checkAngle(Drawers understairDrawerUnit)
         {
             double a = Convert.ToDouble(understairDrawerUnit.baseWidth);
-            double b = Convert.ToDouble(understairDrawerUnit.sideHeight - origlowside);
+            double b = Convert.ToDouble(understairDrawerUnit.sideHeight - understairDrawerUnit.lowSideHeight);
             double tangle = Math.Atan(a / 
                 b) * (180 / Math.PI);
-            if (understairDrawerUnit.cuttingAngle != tangle)
-            {
-                MessageBox.Show("given angle -- " + understairDrawerUnit.cuttingAngle + " -- calculated -- " + tangle);
-            }
             understairDrawerUnit.cuttingAngle = tangle;
         }
 
@@ -107,7 +128,10 @@ namespace WpfApp5
             {
                 plumbLineThroughTopDRawerFrame = getHypot(udu.cuttingAngle, 62);   
                 var f = getOpposite(udu.cuttingAngle, plumbLineThroughTopDRawerFrame + 120 + 78);
+                var origCornerBit = getOpposite(udu.cuttingAngle, udu.lowSideHeight) + 62;
+                udu.baseWidth = udu.baseWidth - (f - origCornerBit);
                 udu.lowSideHeight = getAdjasent(udu.cuttingAngle, f - 62);
+                
             }
             return getOpposite(udu.cuttingAngle, lowSideHeight);
         }
@@ -161,11 +185,8 @@ namespace WpfApp5
             int bottomUpstandHeight, int drawerNumber)
         {
             var drawerFrameCutList = new List<cut>();
-            if (bottomUpstandHeight < 223)
-            {
-                bottomUpstandHeight = getAdjasent(cuttingAngle, bottomCornerOfAngle);
-            }
-            drawerSectionWidth = getDrawerSectionWidth(baseWidth, cabinetWidth, bottomUpstandHeight, cuttingAngle);
+            
+            drawerSectionWidth = baseWidth - (cabinetWidth + 70);// getDrawerSectionWidth(baseWidth, cabinetWidth, bottomUpstandHeight, cuttingAngle);
             
             if (drawerNumber == 6)
             {
@@ -199,9 +220,9 @@ namespace WpfApp5
                 drawerFrameCutList.Add(new cut(drawerSectionUnit.opeTwo, 0, 2, false, "cross peice"));
             }
             // longest vertical
-            var longestY = getAdjasent(cuttingAngle, bottomCornerOfAngle + drawerSectionWidth + 32);            
-            drawerFrameCutList.Add(new cut(longestY - (78 + plumbLineThroughTopDRawerFrame), 0, 2, true, "vertical to long"));
-            drawerSectionUnit.drwHeight = (longestY - 80) / 2;
+            var longestY = getAdjasent(cuttingAngle, bottomCornerOfAngle + drawerSectionWidth + 32) - (78 + plumbLineThroughTopDRawerFrame);            
+            drawerFrameCutList.Add(new cut(longestY , 0, 2, true, "vertical to long"));
+            drawerSectionUnit.drwHeight = (longestY - 70) / 2;
             var secondLongestV = getAdjasent(cuttingAngle, bottomCornerOfAngle + drawerSectionWidth + 32 - (32 + drawerSectionUnit.opeOne));
             drawerFrameCutList.Add(new cut(secondLongestV - (78 + plumbLineThroughTopDRawerFrame), 0, 2, true, "vertical to long"));
 
@@ -210,18 +231,6 @@ namespace WpfApp5
             drawerFrameCutList.Add(new cut(drawerSectionWidth, 540, 1, false, "base peice"));
             return drawerFrameCutList;
         }
-
-        private int getDrawerSectionWidth(int fullWidth, int cabinetWidth, int bottomUpstandHeight, double cuttingAngle)
-        {
-            var dw = ((fullWidth - bottomCornerOfAngle) - cabinetWidth) - 70;
-            if (bottomUpstandHeight < 198)
-            {
-                var fv = getOpposite(cuttingAngle, 198);
-                dw -= fv;
-            }
-            return dw;
-        }
-
 
         private int getHypot(double angle, int opposite)
         {

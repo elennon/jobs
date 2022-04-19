@@ -60,7 +60,17 @@
                 Height="30px"
                 Width="100px"
                 Margin="10,10,10,10">3</TextBox>
-                    <Label FontWeight="Bold">Has a tall unit</Label>
+                    <TextBlock>unit type</TextBlock>
+                    <ComboBox Name="unitTypeCmb" Height="30px" HorizontalAlignment="Left"
+                Width="100px"
+                Margin="10,10,10,10">
+                        <ComboBoxItem IsSelected="True">3dr/tall</ComboBoxItem>
+                        <ComboBoxItem >6dr/tall</ComboBoxItem>
+                        <ComboBoxItem>3dr</ComboBoxItem>
+                        <ComboBoxItem>6dr</ComboBoxItem>
+                    </ComboBox>
+                
+                <Label FontWeight="Bold">Has a tall unit</Label>
                     <CheckBox x:Name="hasTallUnit" Height="30px" HorizontalAlignment="Left"
                 Width="100px"
                 Margin="10,10,10,10" IsChecked="True">has a tall unit</CheckBox>

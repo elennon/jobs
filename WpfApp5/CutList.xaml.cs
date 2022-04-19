@@ -36,7 +36,8 @@ namespace WpfApp5
                 Int32.Parse(drawerNumber.Text),
                 Int32.Parse(depth.Text),
                 Int32.Parse(cabinetWidth.Text),
-                (bool)hasTallUnit.IsChecked);
+                (bool)hasTallUnit.IsChecked,
+                unitTypeCmb.Text);
             unit.getCuttingList(unit);
         }
     }
