@@ -9,7 +9,7 @@
     <Grid>
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
-                <TextBlock Text="Tall Unit" FontSize="20" Margin="30" ></TextBlock>
+                <TextBlock Text="Cutting List" FontSize="20" Margin="30" ></TextBlock>
             </DockPanel>
             <DockPanel Background="Bisque">
                 <StackPanel DockPanel.Dock="Left">
@@ -43,6 +43,12 @@
                 Height="30px"
                 Width="100px"
                 Margin="10,10,10,10">48</TextBox>
+                    <Button Name="btn1" HorizontalAlignment="Left"
+                    Margin="10,10,10,10" Background="LightGray"
+                    BorderBrush="WhiteSmoke" BorderThickness="1" Width="200" Height="35" FontSize="17"
+                    Click="cuttingList_Click" >
+                        get cut list
+                    </Button>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Right">
                     <TextBlock>unit depth</TextBlock>
@@ -74,11 +80,9 @@
                     <CheckBox x:Name="hasTallUnit" Height="30px" HorizontalAlignment="Left"
                 Width="100px"
                 Margin="10,10,10,10" IsChecked="True">has a tall unit</CheckBox>
-                    <Button Name="btn1" Background="Pink" HorizontalAlignment="Left"
-                    BorderBrush="Black" BorderThickness="1" 
-                    Click="cuttingList_Click" >
-                        cutting list
-                    </Button>
+                    <ListView Margin="10,10,0,13" Name="costList" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                              Width="300" Height="200">
+                    </ListView>
                 </StackPanel>
             </DockPanel>
         </DockPanel>

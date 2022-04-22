@@ -5,46 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp5"
         mc:Ignorable="d"
-        Title="UpdateJob" Height="800" Width="800">
+        Title="UpdateJob" Height="900" Width="900">
     <Grid>
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
                 <TextBlock Text="Update job" FontSize="20" Margin="30" ></TextBlock>
             </DockPanel>
             <DockPanel Background="Bisque">
-                <StackPanel DockPanel.Dock="Left">
+                <StackPanel >
                     <ListView Margin="10,10,0,13" Name="jobsDone" HorizontalAlignment="Left" VerticalAlignment="Top"
                               Width="400" Height="300" SelectionChanged="jobsDone_SelectionChanged">
-                        
                     </ListView>
-                    <TextBlock>customer</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="customerName"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10"></TextBox>
-                    <TextBlock>time spent</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="timeSpent"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10"></TextBox>
+                    <TextBlock Margin="10,10,10,10">customer</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="customerName" Height="30px" Margin="10,10,10,10" Width ="200px">
+                    </TextBox>
+                    <Button Name="btn1" Background="LightGray" HorizontalAlignment="Left" Margin="10,10,10,10"
+                        Click="updateJob_Click" BorderBrush="WhiteSmoke" 
+                        Width="200" Height="35" FontSize="17" >update job
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom" Background="AntiqueWhite">
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock FontWeight="Bold" Margin="10,10,10,10">date agreed price</TextBlock>
+                <DatePicker SelectedDateFormat="Long" IsTodayHighlighted="True" Name="dateAgreed"
+                  DisplayDateStart="1/01/22" DisplayDateEnd="12/31/22" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left"
+                  FirstDayOfWeek="Monday"/>
+                <StackPanel Margin="10">
+                        <Label FontWeight="Bold" >state</Label>
+                    <RadioButton Name="agreedRd" >Agreed</RadioButton>
+                    <RadioButton Name="finishedRd" >Finished</RadioButton>
+                </StackPanel>
+                
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Right">
+                    <TextBlock FontWeight="Bold" Margin="10,10,10,10">date finished</TextBlock>
+                    <DatePicker SelectedDateFormat="Long" IsTodayHighlighted="True" Name="finishDate"
+                        DisplayDateStart="1/01/22" DisplayDateEnd="12/31/22" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left"
+                        FirstDayOfWeek="Monday"/>
                     <StackPanel Margin="10">
                         <Label FontWeight="Bold">paid by</Label>
                         <RadioButton Name="paidByCash" >cash</RadioButton>
                         <RadioButton Name="paidByTransfer" >Transfer</RadioButton>
                     </StackPanel>
-                    <TextBlock>date finished</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="finishDate"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10">0</TextBox>
-                    <Button Name="btn1" Background="Pink" HorizontalAlignment="Left"
-                    BorderBrush="Black" BorderThickness="1" 
-                    Click="updateJob_Click" >
-                        mark as done
-                    </Button>
+                    <TextBlock FontWeight="Bold" Margin="10,10,10,10">time spent</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="timeSpent"
+                        Height="30px"
+                        Width="200px"
+                        Margin="10,10,10,10"></TextBox>
                 </StackPanel>
+
             </DockPanel>
-           
         </DockPanel>
     </Grid>
 </Window>

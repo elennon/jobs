@@ -59,31 +59,8 @@ namespace WpfApp5
             cutList.AddRange(GetDrawers(understairDrawerUnit));
             if(understairDrawerUnit.hasTallUnit) cutList.AddRange(GetTallUnit(understairDrawerUnit));
             PrintOut(cutList);
-            getPrice(understairDrawerUnit);
             
-        }
-
-        private void getPrice(Drawers understairDrawerUnit)
-        {
-            double price = 0;
-            var noShts = (eighteenMdfArea + (eighteenMdfArea / 100 * 10)) / 2880000;
-            int i = (int)Math.Ceiling(noShts);
-            price += i * 60;
-            var notvlvShts = (twelveMdfArea + (twelveMdfArea / 100 * 10)) / 2880000;
-            int itwlv = (int)Math.Ceiling(notvlvShts);
-            price += itwlv * 50;
-            if (understairDrawerUnit.drawerNumber == 3)
-            {
-                price += 45;
-            }
-            else price += 90;
-            price += 70; // for 3 by 1.5
-            price += 40; // paint
-            price += 30; // push to open
-            price += 15; // deisel
-            price += 8;  // fixings
-            //price += understairDrawerUnit.
-            MessageBox.Show("materials -- " + price.ToString());
+            
         }
 
         private void checkAngle(Drawers understairDrawerUnit)

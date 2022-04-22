@@ -33,7 +33,7 @@ namespace WpfApp5
         {
             using (var context = new flourEntities2())
             {
-                var jobs = await context.Customers.AsNoTracking().Where(x => x.Agreed == true && x.Finished == false).ToListAsync();
+                var jobs = await context.Customers.AsNoTracking().Where(x => x.Finished == false).ToListAsync();
                 foreach (Customer job in jobs)
                 {
                     jobsDone.Items.Add( job.Name + "-" + job.Address );
@@ -59,11 +59,20 @@ namespace WpfApp5
             using (var context = new flourEntities2())
             {
                 var customer = await context.Customers.AsNoTracking().Where(x => x.CustomerId == custId).FirstOrDefaultAsync();
-                customer.timeTaken = float.Parse(timeSpent.Text);
-                if ((bool)paidByCash.IsChecked) { customer.payedByCash = true; }
-                if ((bool)paidByTransfer.IsChecked) { customer.payedByTransfer = true; }
-                customer.finishDate = DateTime.Parse(finishDate.Text);
-                customer.Finished = true;
+                if (agreedRd.IsChecked == true)
+                {
+                    customer.Agreed = true;
+                    DateTime? agreedDate = dateAgreed.SelectedDate;
+                    customer.AgreedDate = agreedDate;
+                }
+                else { 
+
+                    customer.timeTaken = float.Parse(timeSpent.Text);
+                    if ((bool)paidByCash.IsChecked) { customer.payedByCash = true; }
+                    if ((bool)paidByTransfer.IsChecked) { customer.payedByTransfer = true; }
+                    customer.finishDate = DateTime.Parse(finishDate.Text);
+                    customer.Finished = true;
+                }
                 context.Customers.Attach(customer);
                 context.Entry(customer).State = EntityState.Modified;
                 context.SaveChanges();

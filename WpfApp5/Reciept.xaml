@@ -9,33 +9,33 @@
     <Grid>
         <DockPanel>
             <DockPanel DockPanel.Dock="Top">
-                <TextBlock Text="Tall Unit" FontSize="20" Margin="30" ></TextBlock>
+                <TextBlock Text="Add Reciept" FontSize="20" Margin="30" ></TextBlock>
             </DockPanel>
             <DockPanel Background="Bisque">
                 <StackPanel DockPanel.Dock="Left">
-                    <StackPanel Margin="10,10,10,10" Height="30px"
-                Width="200px">
-                        <TextBlock>supplier</TextBlock>
-                        <ComboBox Name="supplier" >
+
+
+                    <TextBlock FontWeight="Bold" Margin="10,10,10,10">supplier</TextBlock>
+                    <ComboBox  Margin="10,10,10,10" Width="200" HorizontalAlignment="Left" Name="supplier" >
                             <ComboBoxItem IsSelected="True">Noyaks</ComboBoxItem>
                             <ComboBoxItem >Barrets</ComboBoxItem>
                             <ComboBoxItem>Strahans</ComboBoxItem>
                             <ComboBoxItem>Clearys</ComboBoxItem>
                             <ComboBoxItem>Deisel</ComboBoxItem>
                         </ComboBox>
-                    </StackPanel>
-                    <TextBlock>spent</TextBlock>
+
+                    <TextBlock FontWeight="Bold" Margin="10,10,10,10">spent</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="spent"
                 Height="30px"
                 Width="200px"
                 Margin="10,10,10,10"></TextBox>
-                    <TextBlock>date bought</TextBlock>
+                    <TextBlock FontWeight="Bold" Margin="10,10,10,10">date bought</TextBlock>
                     <DatePicker SelectedDateFormat="Long" IsTodayHighlighted="True" Name="dateBought"
                   DisplayDateStart="1/01/22" DisplayDateEnd="12/31/22" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left"
                   FirstDayOfWeek="Monday"/>
 
-                    <Button Name="btn1" Background="Pink" HorizontalAlignment="Left"
-                    BorderBrush="Black" BorderThickness="1" 
+                    <Button Name="btn1" Background="LightGray" HorizontalAlignment="Left" Margin="10,10,10,10"
+                    BorderBrush="WhiteSmoke" BorderThickness="1" Width="200" Height="35" FontSize="17"
                     Click="addReceipt_Click" >
                         add receipt
                     </Button>

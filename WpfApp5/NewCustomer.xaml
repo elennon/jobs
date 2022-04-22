@@ -28,26 +28,11 @@
                 Height="30px"
                 Width="200px"
                 Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>number</TextBlock>
+                    <TextBlock>phone number</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="customerNumber"
                 Height="30px"
                 Width="200px"
                 Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>across the floor</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="widthAcrossTheFloor"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>height from the floor</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="heightfromTheFloor"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>Angle</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="angle"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10"></TextBox>
                     <TextBlock>Time to make and fit</TextBlock>
                     <TextBox HorizontalAlignment="Left" x:Name ="time"
                 Height="30px"
@@ -64,8 +49,9 @@
                 Width="200px"
                 Margin="10,10,10,10"
                   FirstDayOfWeek="Monday"/>
-                    <Button Name="btn1" Background="Pink" HorizontalAlignment="Left"
-                    BorderBrush="Black" BorderThickness="1" 
+                    <Button Name="btn1" Background="LightGray" HorizontalAlignment="Left"
+                    Margin="10,10,10,10"
+                    BorderBrush="WhiteSmoke" BorderThickness="1" Width="200" Height="35" FontSize="17"
                     Click="btn1_Click" >
                         add new quote
                     </Button>
@@ -82,41 +68,21 @@
                             <ComboBoxItem>6 drawer with tall unit</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
-                    <TextBlock>18mm mdf</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="eighteenmmMdf"
+                    <TextBlock>across the floor</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="widthAcrossTheFloor"
                 Height="30px"
                 Width="200px"
                 Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>12mm mdf</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="twelvemmMdf"
+                    <TextBlock>height from the floor</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="heightfromTheFloor"
                 Height="30px"
                 Width="200px"
                 Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>9mm mdf</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="ninemmMdf"
+                    <TextBlock>Angle</TextBlock>
+                    <TextBox HorizontalAlignment="Left" x:Name ="angle"
                 Height="30px"
                 Width="200px"
-                Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>runners</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="runners"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>push to open</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="pushToOpen"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>3 x 1 and half</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="threeBy"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10">0</TextBox>
-                    <TextBlock>paint</TextBlock>
-                    <TextBox HorizontalAlignment="Left" x:Name ="paint"
-                Height="30px"
-                Width="200px"
-                Margin="10,10,10,10">0</TextBox>
+                Margin="10,10,10,10"></TextBox>
                     <TextBlock>date agreed price</TextBlock>
                     <DatePicker SelectedDateFormat="Long" IsTodayHighlighted="True" Name="dateAgreed"
                   DisplayDateStart="1/01/22" DisplayDateEnd="12/31/22" Width="200" Margin="10,10,10,10" HorizontalAlignment="Left"
@@ -124,7 +90,6 @@
                     <StackPanel Margin="10">
                         <Label FontWeight="Bold">state</Label>
                         <RadioButton Name="agreedRd" >Agreed</RadioButton>
-                        <RadioButton Name="finishedRd" >Finished</RadioButton>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>

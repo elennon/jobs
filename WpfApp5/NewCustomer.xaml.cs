@@ -58,40 +58,10 @@ namespace WpfApp5
             {
                 customer.QuoteDate = quoteDate;
             }
-
-            DateTime? agreedDate = dateAgreed.SelectedDate;
-            customer.AgreedDate = agreedDate;
-
-            customer.JobType = jobtype.Text.ToString();
-            if (eighteenmmMdf.Text != "")
-            {
-                customer.EighteenMDF = Int32.Parse(eighteenmmMdf.Text);
-            }
-            if (twelvemmMdf.Text != "")
-            {
-                customer.TwelveMDF = Int32.Parse(twelvemmMdf.Text);
-            }
-            if (ninemmMdf.Text != "")
-            {
-                customer.NineMDF = Int32.Parse(ninemmMdf.Text);
-            }
-            if (runners.Text != "")
-            {
-                customer.Runners = Int32.Parse(runners.Text);
-            }
-            if (pushToOpen.Text != "")
-            {
-                customer.PushToOpen = Int32.Parse(pushToOpen.Text);
-            }
-            customer.ThreeBy = Int32.Parse(threeBy.Text);
-
-            if (paint.Text != "")
-            {
-                customer.Paint = Int32.Parse(paint.Text);
-            }
-            if ((bool)agreedRd.IsChecked) { customer.Agreed = true; } else { customer.Agreed = false; }
-            if ((bool)finishedRd.IsChecked) { customer.Finished = true; } else { customer.Finished = false; }
-
+             customer.JobType = jobtype.Text.ToString();
+            
+             if ((bool)agreedRd.IsChecked) { customer.Agreed = true; } else { customer.Agreed = false; }
+            
             using (var context = new flourEntities2())
             {
                 context.Customers.Add(customer);
